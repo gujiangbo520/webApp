@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gujiangbo.application.mapper.DataBaseMapper">
+    <select id="selectOrder" parameterType="map" resultType="com.gujiangbo.application.info.OrderInfo">
+        <![CDATA[
+			select * from t_order where orderId=#{orderId} and sourceId=#{sourceId}
+		]]>
+    </select>
+</mapper>

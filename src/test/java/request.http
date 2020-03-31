@@ -1,0 +1,4 @@
+POST
+http://localhost:8090/sayHello
+@Content-Type: application/json
+{"name":"JsonDan"}
