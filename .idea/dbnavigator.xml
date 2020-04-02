@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DataExportManager">
@@ -23,7 +23,11 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="f474ac42-1f2e-4952-ab1e-d61cf86980f9">
+        <schema name="webapp" object-types="view, column, index, table, constraint, dataset trigger, function, procedure" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="f474ac42-1f2e-4952-ab1e-d61cf86980f9">
@@ -36,8 +40,14 @@
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="f474ac42-1f2e-4952-ab1e-d61cf86980f9" />
   </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="f474ac42-1f2e-4952-ab1e-d61cf86980f9" dataset="webapp.t_subAccount" active-filter-id="" />
+  </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
+  </component>
+  <component name="DBNavigator.Project.FileConnectionMappingManager">
+    <mapping file-url="file://$PROJECT_DIR$/sqlFile/show.sql" connection-id="f474ac42-1f2e-4952-ab1e-d61cf86980f9" session-id="MAIN" current-schema="webapp" />
   </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
     <method-browser />
