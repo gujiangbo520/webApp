@@ -6,15 +6,13 @@ import com.gujiangbo.application.response.SelectOrderResponse;
 import com.gujiangbo.application.response.SubscribeResponse;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
-
 /**
- * @description 北向服务接口
+ * @description 南向服务接口
  */
 @Service
-public interface HttpNorthManageService {
+public interface HttpSorthManageService {
 
-    public SelectOrderResponse selectOrder(SelectOrderRequest request, HttpServletRequest httpServletRequest);
+    public abstract SelectOrderResponse selectOrder(SelectOrderRequest request);
 
-    public SubscribeResponse subscribe(SubscribeRequest request, HttpServletRequest httpServletRequest);
+    public abstract SubscribeResponse subscribe(SubscribeRequest request);
 }

@@ -8,11 +8,6 @@ import java.util.Date;
 public class BaseInfo {
 
     /**
-     * 请求来源：用于区分请求者
-     */
-    private String sourceId;
-
-    /**
      * 创建时间
      */
     private String createTime;
@@ -34,13 +29,6 @@ public class BaseInfo {
      */
     private String info;
 
-    public String getSourceId() {
-        return sourceId;
-    }
-
-    public void setSourceId(String sourceId) {
-        this.sourceId = sourceId;
-    }
 
     public String getCreateTime() {
         return createTime;

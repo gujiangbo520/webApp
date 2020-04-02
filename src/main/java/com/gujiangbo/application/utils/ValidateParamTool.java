@@ -7,8 +7,8 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import com.github.pagehelper.StringUtil;
 import com.gujiangbo.application.manage.service.impl.HttpNorthManageServiceImpl;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.BeanUtils;
@@ -37,14 +37,14 @@ public class ValidateParamTool {
         List<String> errList = new ArrayList<>();
         for (PropertyDescriptor targetPd : targetPds) {
             Method readMethod = targetPd.getReadMethod();
-            if (readMethod != null && (checkList != null || checkList.contains(targetPd.getName()))) {
+            if (readMethod != null && (checkList != null && checkList.contains(targetPd.getName()))) {
                 try {
                     if (!Modifier.isPublic(readMethod.getDeclaringClass().getModifiers())) {
                         readMethod.setAccessible(true);
                     }
                     Object value = readMethod.invoke(validateObj);
                     if (value instanceof String) {
-                        if (StringUtil.isEmpty((String) value)) {
+                        if (StringUtils.isEmpty((String) value)) {
                             errList.add(validateObj.getClass().getSimpleName() + "中的" + targetPd.getName() + "不能为空");
                             continue;
                         }

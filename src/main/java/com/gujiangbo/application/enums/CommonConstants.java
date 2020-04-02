@@ -1,7 +1,7 @@
-package com.gujiangbo.application.utils;
+package com.gujiangbo.application.enums;
 
 /**
- * 常量
+ * @description 常量主要用于定义返回码，返回描述
  */
 public class CommonConstants {
 

@@ -4,10 +4,34 @@ import com.gujiangbo.application.base.BaseInfo;
 
 public class OrderInfo extends BaseInfo {
 
+    /*订单ID*/
     private String orderId;
+    /*订单名称*/
     private String orderName;
+    /*订单价格*/
     private double orderPrice;
+    /*订单数量*/
+    private Integer orderNum;
+    /*订单产地*/
     private String orderFactory;
+    /*订购者*/
+    private String subAccount;
+
+    public String getSubAccount() {
+        return subAccount;
+    }
+
+    public void setSubAccount(String subAccount) {
+        this.subAccount = subAccount;
+    }
+
+    public Integer getOrderNum() {
+        return orderNum;
+    }
+
+    public void setOrderNum(Integer orderNum) {
+        this.orderNum = orderNum;
+    }
 
     public String getOrderId() {
         return orderId;

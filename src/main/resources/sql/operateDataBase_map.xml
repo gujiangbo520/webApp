@@ -3,9 +3,44 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gujiangbo.application.mapper.DataBaseMapper">
+    <!-- 根据订单编号 与 订单账号查询订单，只能查询出一条数据-->
     <select id="selectOrder" parameterType="map" resultType="com.gujiangbo.application.info.OrderInfo">
         <![CDATA[
-			select * from t_order where orderId=#{orderId} and sourceId=#{sourceId}
+			select * from t_order where orderId=#{orderId}
 		]]>
+    </select>
+
+    <insert id="saveOrderInfo" parameterType="com.gujiangbo.application.info.OrderInfo">
+        <![CDATA[
+            insert into t_order (orderId,orderName,orderPrice,orderNum,orderFactory,createTime,
+            updateTime,createUser,updateUser,subAccount,info) values
+            (#{orderId,jdbcType=VARCHAR},#{orderName,jdbcType=VARCHAR},#{orderPrice},#{orderNum,jdbcType=INTEGER},
+            #{orderFactory,jdbcType=VARCHAR},now(),now(),#{createUser,jdbcType=VARCHAR},#{updateUser,jdbcType=VARCHAR},
+            #{subAccount,jdbcType=VARCHAR},#{info,jdbcType=VARCHAR})
+        ]]>
+    </insert>
+
+    <insert id="insertSubAccount" parameterType="com.gujiangbo.application.info.SubAccount">
+        <![CDATA[
+            insert into t_subAccount (accountId,subAccount,subName,subGender,subAddress,subPhone,
+            subPostCode,createTime,updateTime,createUser,updateUser,info)
+            values
+            (#{accountId,jdbcType=VARCHAR},#{subAccount,jdbcType=VARCHAR},#{subName,jdbcType=VARCHAR},#{subGender,jdbcType=VARCHAR},
+            #{subAddress,jdbcType=VARCHAR},#{subPhone,jdbcType=VARCHAR},#{subPostCode,jdbcType=VARCHAR},now(),now(),
+            #{createUser,jdbcType=VARCHAR},#{updateUser,jdbcType=VARCHAR}, #{info,jdbcType=VARCHAR})
+        ]]>
+    </insert>
+
+    <update id="updateSubAccount" parameterType="com.gujiangbo.application.info.SubAccount">
+        <![CDATA[
+            update t_subAccount set subName=#{subName,jdbcType=VARCHAR},subGender=#{subGender,jdbcType=VARCHAR},
+            subPhone=#{subPhone,jdbcType=VARCHAR},subPostCode=#{subPostCode,jdbcType=VARCHAR},updateTime=now(),
+            updateUser=#{updateUser,jdbcType=VARCHAR},info=#{info,jdbcType=VARCHAR} where accountId=#{accountId,jdbcType=VARCHAR}
+            and subAccount=#{subAccount,jdbcType=VARCHAR}
+        ]]>
+    </update>
+
+    <select id="selectSubAccount" parameterType="map" resultType="com.gujiangbo.application.info.SubAccount">
+        select * from t_subAccount where accountId=#{accountId} and subAccount=#{subAccount}
     </select>
 </mapper>

@@ -1,12 +1,12 @@
 package com.gujiangbo.application.utils;
 
 import com.gujiangbo.application.base.BaseResponse;
+import com.gujiangbo.application.enums.CommonConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
