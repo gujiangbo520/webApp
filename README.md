@@ -36,6 +36,30 @@ Controller控制层为前置系统提供Http POST or GET 等请求服务,请求�
 日志样例：<br>
 请求返回码|接口名|请求流向|请求时间|响应时间|耗时|请求头|请求体|响应体|返回描述|流程串Id <br>
 
+### Linux 服务器下Tomcat生成的catalina.out 日志分割
+安装步骤:<br>
+1、下载（最新版本）<br>
+wget http://cronolog.org/download/cronolog-1.6.2.tar.gz<br>
+2、解压缩<br>
+tar zxvf cronolog-1.6.2.tar.gz<br>
+3、进入cronolog安装文件所在目录 <br>
+cd cronolog-1.6.2 <br>
+4、运行安装 <br>
+./configure <br>
+make&&make install <br>
+5、查看cronolog安装后所在目录（验证安装是否成功） <br>
+which cronolog <br>
+一般情况下显示为：/usr/local/sbin/cronolog  <br>
+要想分割tomcat的catalina.out，需作如下工作： <br>
+6.修改tomcat bin目录下的catalina.sh<br>
+将文件中的org.apache.catalina.startup.Bootstrap “$@” start  \ 
+>> “$CATALINA_BASE”/logs/catalina.out 2>&1 & <br>
+改成<br>
+org.apache.catalina.startup.Bootstrap "$@" start  2>&1 \
+| /usr/local/sbin/cronolog "$CATALINA_BASE"/logs/catalina.%Y-%m-%d.out >> /dev/null &
+<br>
+去除 touch “$CATALINA_BASE”
+
 ### 更新日志
 2020/3/30 提交项目<br>
 2020/4/1 新增加下单接口，优化代码逻辑<br>
