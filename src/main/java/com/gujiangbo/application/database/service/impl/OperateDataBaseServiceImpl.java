@@ -13,9 +13,14 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+/**
+ * @author gujiangbo
+ */
 @Repository
 public class OperateDataBaseServiceImpl implements OperateDataBaseService {
 
@@ -84,14 +89,29 @@ public class OperateDataBaseServiceImpl implements OperateDataBaseService {
     public SubAccount selectSubAccount(SubAccount account) {
         debugLog.info("开始查询账号信息:");
         SubAccount sub = new SubAccount();
-        Map<String,String> map = new HashMap<String,String>(16);
-        map.put("accountId",account.getAccountId());
-        map.put("subAccount",account.getSubAccount());
-        try{
+        Map<String, String> map = new HashMap<String, String>(16);
+        map.put("accountId", account.getAccountId());
+        map.put("subAccount", account.getSubAccount());
+        try {
             sub = this.dataBaseMapper.selectSubAccount(map);
-        }catch (Exception e){
-            debugLog.info("账号查询失败!",e);
+        } catch (Exception e) {
+            debugLog.info("账号查询失败!", e);
         }
         return sub;
+    }
+
+    @Override
+    public List<OrderInfo> queryOrderInfoBySubAccount(String subAccount) {
+        debugLog.info("开始查询订单信息!");
+        List<OrderInfo> list = null;
+        Map<String, String> map = new HashMap<>(16);
+        map.put("subAccount",subAccount);
+        try {
+            list = this.dataBaseMapper.selectOrderAccountId(map);
+        } catch (Exception e) {
+            debugLog.error("数据查询失败，", e);
+        }
+        debugLog.info(list);
+        return list;
     }
 }

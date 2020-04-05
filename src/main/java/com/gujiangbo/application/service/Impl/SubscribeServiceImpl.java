@@ -1,6 +1,6 @@
 package com.gujiangbo.application.service.Impl;
 
-import com.gujiangbo.application.manage.service.HttpSorthManageService;
+import com.gujiangbo.application.manage.service.HttpSouthManageService;
 import com.gujiangbo.application.request.SubscribeRequest;
 import com.gujiangbo.application.response.SubscribeResponse;
 import com.gujiangbo.application.service.SubscribeService;
@@ -11,10 +11,10 @@ import org.springframework.stereotype.Repository;
 public class SubscribeServiceImpl implements SubscribeService {
 
     @Autowired
-    private HttpSorthManageService httpSorthManageService;
+    private HttpSouthManageService httpSouthManageService;
 
     @Override
     public SubscribeResponse subscribe(SubscribeRequest request) {
-        return httpSorthManageService.subscribe(request);
+        return httpSouthManageService.subscribe(request);
     }
 }

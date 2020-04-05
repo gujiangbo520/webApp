@@ -1,33 +1,32 @@
 package com.gujiangbo.application.manage.service.impl;
 
-import cn.hutool.core.date.DateUtil;
+import com.gujiangbo.application.base.BaseResponse;
 import com.gujiangbo.application.database.service.OperateDataBaseService;
 import com.gujiangbo.application.enums.CommonConstants;
 import com.gujiangbo.application.enums.CommonEnums;
 import com.gujiangbo.application.info.OrderInfo;
 import com.gujiangbo.application.info.SubAccount;
-import com.gujiangbo.application.manage.service.HttpSorthManageService;
+import com.gujiangbo.application.manage.service.HttpSouthManageService;
 import com.gujiangbo.application.request.SelectOrderRequest;
 import com.gujiangbo.application.request.SubscribeRequest;
 import com.gujiangbo.application.response.SelectOrderResponse;
 import com.gujiangbo.application.response.SubscribeResponse;
-import com.gujiangbo.application.service.Impl.SelectOrderServiceImpl;
-import com.gujiangbo.application.utils.IDTools;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
+/**
+ * @author gujiangbo
+ */
 @Repository
-public class HttpSorthManageServiceImpl implements HttpSorthManageService {
+public class HttpSouthManageServiceImpl implements HttpSouthManageService {
 
-    private Log debugLog = LogFactory.getLog(HttpSorthManageServiceImpl.class);
+    private Log debugLog = LogFactory.getLog(HttpSouthManageServiceImpl.class);
     @Autowired
     private OperateDataBaseService operateDataBaseService;
 
@@ -111,6 +110,30 @@ public class HttpSorthManageServiceImpl implements HttpSorthManageService {
         }
 
 
+        return response;
+    }
+
+    @Override
+    public BaseResponse updateSubAccount(SubAccount account) {
+        BaseResponse baseResponse = new BaseResponse();
+        debugLog.info("南向接口开始执行更新收件人信息！");
+        if (operateDataBaseService.updateSubAccount(account)) {
+            baseResponse.setReturnCode(CommonConstants.SUCCESS_CODE);
+            baseResponse.setReturnMsg(CommonConstants.SUCCESS_DESC);
+            debugLog.info("收件人数据更新成功！");
+        } else {
+            debugLog.info("收件人数据更新失败！");
+        }
+        return baseResponse;
+    }
+
+    @Override
+    public SelectOrderResponse queryOrderInfo(String subAccount) {
+        SelectOrderResponse response = new SelectOrderResponse();
+        List<OrderInfo> info = operateDataBaseService.queryOrderInfoBySubAccount(subAccount);
+        response.setList(info);
+        response.setReturnMsg(CommonEnums.SUCCESS_MSG);
+        response.setReturnCode(CommonEnums.SUCCESS_CODE);
         return response;
     }
 }

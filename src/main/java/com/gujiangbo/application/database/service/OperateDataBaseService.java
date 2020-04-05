@@ -6,6 +6,8 @@ import com.gujiangbo.application.request.SelectOrderRequest;
 import com.gujiangbo.application.response.SelectOrderResponse;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface OperateDataBaseService {
 
@@ -45,8 +47,18 @@ public interface OperateDataBaseService {
 
     /**
      * 查询收件人信息
+     *
      * @param account
      * @return
      */
     SubAccount selectSubAccount(SubAccount account);
+
+    /**
+     * 根据订购者账号查询订单信息
+     *
+     * @param subAccount
+     * @return
+     */
+    List<OrderInfo> queryOrderInfoBySubAccount(String subAccount);
+
 }

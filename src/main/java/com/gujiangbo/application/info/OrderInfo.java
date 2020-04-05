@@ -2,6 +2,9 @@ package com.gujiangbo.application.info;
 
 import com.gujiangbo.application.base.BaseInfo;
 
+/**
+ * @author gujiangbo
+ */
 public class OrderInfo extends BaseInfo {
 
     /*订单ID*/

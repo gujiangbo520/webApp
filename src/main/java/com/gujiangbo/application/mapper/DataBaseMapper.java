@@ -6,8 +6,12 @@ import com.gujiangbo.application.request.SelectOrderRequest;
 import com.gujiangbo.application.response.SelectOrderResponse;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Map;
 
+/**
+ * @author gujiangbo
+ */
 @Repository
 public interface DataBaseMapper {
 
@@ -20,4 +24,6 @@ public interface DataBaseMapper {
     void insertSubAccount(SubAccount account);
 
     SubAccount selectSubAccount(Map<String,String> map);
+
+    List<OrderInfo> selectOrderAccountId(Map<String,String> map);
 }

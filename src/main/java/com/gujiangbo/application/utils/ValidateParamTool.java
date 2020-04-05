@@ -7,6 +7,8 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.gujiangbo.application.manage.service.impl.HttpNorthManageServiceImpl;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
@@ -60,5 +62,31 @@ public class ValidateParamTool {
         }
         debugLog.info("参数校验结束");
         return errList;
+    }
+
+    /**
+     * 校验JSON 字符串中是否包含的key
+     *
+     * @return
+     */
+    public static boolean checkStrProperty(String jsonStr, String... strs) {
+        boolean flag = false;
+        if (StringUtils.isBlank(jsonStr)) {
+            return false;
+        }
+        if (strs == null) {
+            return true;
+        }
+        JSONObject obj = JSONObject.parseObject(jsonStr);
+        for (String s : strs) {
+            if (obj.containsKey(s)) {
+                if (StringUtils.isNotBlank(String.valueOf(obj.get(s)))) {
+                    flag = true;
+                }
+            } else {
+                flag = false;
+            }
+        }
+        return flag;
     }
 }

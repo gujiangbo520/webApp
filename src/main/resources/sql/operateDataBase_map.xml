@@ -43,4 +43,9 @@
     <select id="selectSubAccount" parameterType="map" resultType="com.gujiangbo.application.info.SubAccount">
         select * from t_subAccount where accountId=#{accountId} and subAccount=#{subAccount}
     </select>
+    <select id="selectOrderAccountId" parameterType="map" resultType="com.gujiangbo.application.info.OrderInfo">
+        <![CDATA[
+        select * from t_order where subAccount=#{subAccount}
+        ]]>
+    </select>
 </mapper>
