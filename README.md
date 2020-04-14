@@ -53,14 +53,14 @@ which cronolog <br>
 要想分割tomcat的catalina.out，需作如下工作： <br>
 6.修改tomcat bin目录下的catalina.sh<br>
 将文件中的
-```javaorg.apache.catalina.startup.Bootstrap “$@” start  \ 
->> “$CATALINA_BASE”/logs/catalina.out 2>&1 & <br>
-改成<br>
+```shell script
+javaorg.apache.catalina.startup.Bootstrap “$@” start  \ 
+>> “$CATALINA_BASE”/logs/catalina.out 2>&1 &
+改成
 org.apache.catalina.startup.Bootstrap "$@" start  2>&1 \
 | /usr/local/sbin/cronolog "$CATALINA_BASE"/logs/catalina.%Y-%m-%d.out >> /dev/null &
-<br>
 去除 touch “$CATALINA_BASE”
-
+```
 ### 更新日志
 2020/3/30 提交项目<br>
 2020/4/1 新增加下单接口，优化代码逻辑<br>
