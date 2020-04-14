@@ -52,7 +52,8 @@ which cronolog <br>
 一般情况下显示为：/usr/local/sbin/cronolog  <br>
 要想分割tomcat的catalina.out，需作如下工作： <br>
 6.修改tomcat bin目录下的catalina.sh<br>
-将文件中的org.apache.catalina.startup.Bootstrap “$@” start  \ 
+将文件中的
+```javaorg.apache.catalina.startup.Bootstrap “$@” start  \ 
 >> “$CATALINA_BASE”/logs/catalina.out 2>&1 & <br>
 改成<br>
 org.apache.catalina.startup.Bootstrap "$@" start  2>&1 \

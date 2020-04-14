@@ -15,6 +15,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
  * 备注：spring boot发布jar包web程序的入口是main函数所在的类，使用@SpringBootApplication注解。
  * 但是如果war包发布至tomcat，需要增加 SpringBootServletInitializer 子类，并覆盖它的 configure 方法，
  * 或者直接将main函数所在的类继承 SpringBootServletInitializer 子类，并覆盖它的 configure 方法。
+ * @author gujiangbo
  */
 @MapperScan(basePackages = {"com.gujiangbo.application.mapper"})
 @SpringBootApplication

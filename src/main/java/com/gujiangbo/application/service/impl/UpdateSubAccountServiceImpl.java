@@ -1,4 +1,4 @@
-package com.gujiangbo.application.service.Impl;
+package com.gujiangbo.application.service.impl;
 
 import com.gujiangbo.application.base.BaseResponse;
 import com.gujiangbo.application.info.SubAccount;
