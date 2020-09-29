@@ -35,7 +35,7 @@ public class SubscribeController {
 
     @RequestMapping(value = "subscribe", method = {RequestMethod.POST})
     public String subscribe(@RequestBody String requestBody, HttpServletRequest httpServletRequest) {
-        debugLog.info(" 请求信息:" + requestBody);
+        debugLog.info("请求信息:" + requestBody);
         SubscribeRequest request = new SubscribeRequest();
         SubscribeResponse response = new SubscribeResponse();
         try {

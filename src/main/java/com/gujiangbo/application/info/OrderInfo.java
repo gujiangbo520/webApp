@@ -67,4 +67,12 @@ public class OrderInfo extends BaseInfo {
     public void setOrderFactory(String orderFactory) {
         this.orderFactory = orderFactory;
     }
+
+	@Override
+	public String toString() {
+		return "OrderInfo [orderId=" + orderId + ", orderName=" + orderName + ", orderPrice=" + orderPrice
+				+ ", orderNum=" + orderNum + ", orderFactory=" + orderFactory + ", subAccount=" + subAccount + "]";
+	}
+    
+    
 }

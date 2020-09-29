@@ -1,4 +1,4 @@
-package com.gujiangbo.application.rabbitmq;
+/*package com.gujiangbo.application.rabbitmq;
 
 import com.gujiangbo.application.rabbitmq.utils.DirectRabbitConfig;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
+*//**
  * RabbitMQ 测试类 生产者
  *
  * @author gujiangbo
- */
+ *//*
 @RestController
 public class SendMessageController {
 
@@ -28,3 +28,4 @@ public class SendMessageController {
         return "send success !";
     }
 }
+*/
